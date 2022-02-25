@@ -347,6 +347,10 @@ module Lockbox
 
             include m
 
+            # Add encrypted field as a Mongoid field to
+            # provide similar methods like getter, setter and xxx_changed?
+            field "#{encrypted_attribute}", type: String
+
             alias_method "#{name}_changed?", "#{encrypted_attribute}_changed?"
 
             define_method "#{name}_was" do
